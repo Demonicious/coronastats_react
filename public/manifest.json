@@ -1,25 +1,18 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "lang": "en",
+  "name": "Live Coronavirus Tracker & News",
+  "description": "Live Updates, News and Statistics of Coronavirus from around the Globe, COVID-19 affected areas, along with in-depth details of Infections, Deaths, Recoveries and Critical Cases, Stay updated with latest Corona Outbreak.",
+  "short_name": "Coronastats.co",
   "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": ".",
+        {
+            "src": "images/icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+   ],
+  "theme_color": "#27293d",
+  "background_color": "#1e1e2f",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "natural"
 }

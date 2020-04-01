@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title>COVID-19 Statistics Table - coronastats.co</title>
+    <link rel="icon" type="image/png" href="https://coronastats.co/images/favicon.png">
+    <meta property="og:title" content="COVID-19 Statistics Table">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="COVID-19 Statistics Table - coronastats.co">
+	<meta property="og:url" content="https://coronastats.co/table">
+	<meta property="og:description" content="Worldwide statistics arranged with a simple & easy to use Data Table. Live Coronavirus Statistics.">
+	<meta property="og:image" content="https://i.imgur.com/VVz5sYI.png">
+	<meta name="description" content="Live Updates, Statistics and News of Coronavirus from around the Globe, COVID-19 affected areas, along with in-depth details of Infections, Deaths, Recoveries and Critical Cases, Stay updated with latest Corona Outbreak.">
+	<meta name="keywords" content="corona table, coronavirus table, covid-19 table, coronavirus tracker, coronavirus stats">
+	<meta name="apple-mobile-web-app-status-bar" content="#27293d">
+	<link rel="apple-touch-icon" href="images/icon.png">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-html5-1.6.1/b-print-1.6.1/sp-1.0.1/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.20/af-2.3.4/b-1.6.1/b-html5-1.6.1/b-print-1.6.1/sp-1.0.1/datatables.min.js"></script>
+    <style>
+        #container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #spreadsheet {
+            margin: 10px 0;
+        }
+
+        a.coffee {
+            font-weight: bold;
+            font-size: 11px;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 3px;
+            background: #fc2751;
+            color: #fff;
+        }
+
+        a.save {
+            font-weight: bold;
+            font-size: 11px;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 3px;
+            background: #2164bb;
+            color: #fff;
+        }
+
+        a.detailed {
+            font-weight: bold;
+            font-size: 11px;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 3px;
+            background: #b139c9;
+            color: #fff;
+        }
+
+        #buttons {
+            float: right;
+        }
+
+        #last_update, .stat {
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            line-height: 2px;
+            padding-right: 200px;
+        }
+
+        #last_update_text {
+            color: red;
+        }
+
+        .stat {
+            font-size: 15px;
+            line-height: normal;
+        }
+
+        .stat_inner {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .stat.infections .stat_inner {
+            color: purple;
+        }
+
+        .stat.deaths .stat_inner {
+            color: red;
+        }
+
+        .stat.recoveries .stat_inner {
+            color: green;
+        }
+
+        .stat.critical .stat_inner {
+            color: rgb(255, 123, 0);
+        }
+
+        #worldwide {
+            margin-top: 20px;
+        }
+
+        #table {
+            margin-top: 20px;
+            border: none !important;
+        }
+
+        table tbody tr td:nth-child(1) {
+            font-weight: bold;
+        }
+
+        table tbody tr td:nth-child(2) {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        table tbody tr td:nth-child(3) {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        table tbody tr td:nth-child(4) {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        table tbody tr td:nth-child(5) {
+            background: rgba(75, 0, 255, 0.4);
+            font-weight: bold;
+        }
+
+        table tbody tr td:nth-child(6) {
+            background: rgba(255, 0, 0, 0.699);
+            font-weight: bold;
+        }
+
+        table tbody tr td:nth-child(7) {
+            background: rgba(40, 163, 9, 0.733);
+            font-weight: bold;
+        }
+
+        table tbody tr td:nth-child(8) {
+            background: rgba(238, 255, 0, 0.514);
+            font-weight: bold;
+        }
+
+        table tbody tr td:nth-child(9) {
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        #loader {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="logo">
+            <img src="https://coronastats.co/images/logo_dark.png" />
+        </div>
+        <div id="info">
+            <span id="last_update">Last Update: <span id="last_update_text">Never</span></span>
+            <span id="buttons">
+                <a class="save" href="javascript:void(0)">Save as CSV</a>
+                <a class="detailed" href="https://coronastats.co" target="_blank">View Detailed Statistics</a>
+                <a class="coffee" href="https://ko-fi.com/R6R61HVEW" target="_blank">Buy Me a Coffee</a>
+            </span>
+        </div>
+        <div id="worldwide">
+            <div class="stat infections">Infections: <span id="world_total" class="stat_inner">0</span></div>
+            <div class="stat deaths">Deaths: <span id="world_total" class="stat_inner">0</span></div>
+            <div class="stat recoveries">Recoveries: <span id="world_total" class="stat_inner">0</span></div>
+            <div class="stat critical">Critical: <span id="world_total" class="stat_inner">0</span></div>
+            <div id="loader" class="stat">Loading...</div>
+        </div>
+        <div id="table" class="table table-bordered table-hover">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Country / Region</th>
+                        <th>Confirmed Infections</th>
+                        <th>Confirmed Deaths</th>
+                        <th>New Infections</th>
+                        <th>New Deaths</th>
+                        <th>Recoveries</th>
+                        <th>Critical</th>
+                        <th>Infections / 1 Million Population</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <footer>
+        <script type="text/javascript">
+            $.ajax({
+                dataType: 'json',
+                url: 'https://coronastats.co/builds/latest.json?v=' + Math.round(Math.random() * 1000),
+                success: (data) => {
+                    $('#loader').remove();
+                    document.getElementById('last_update_text').innerText = Date(data.latest.time.stamp * 1000);
+                    let total_infections = 0;
+                    let total_deaths = 0;
+                    let new_infections = 0;
+                    let new_deaths = 0;
+                    let recoveries = 0;
+                    let critical = 0;
+                    let per1mpop = 0;
+                    let data_to_render = data.latest.json.map((c, i) => {
+                        total_infections += c.all_cases;
+                        total_deaths += c.all_deaths;
+                        new_infections += c.new_cases;
+                        new_deaths += c.new_deaths;
+                        recoveries += c.recoveries;
+                        critical += c.critical;
+                        per1mpop += c.per1mpop;
+                        return [
+                            i + 1,
+                            c.name,
+                            c.all_cases.toLocaleString(),
+                            c.all_deaths.toLocaleString(),
+                            '+' + c.new_cases.toLocaleString(),
+                            '+' + c.new_deaths.toLocaleString(),
+                            c.recoveries.toLocaleString(),
+                            c.critical.toLocaleString(),
+                            c.per1mpop.toLocaleString(),
+                        ];
+                    });
+                    $('.stat.infections > .stat_inner').html(`${total_infections.toLocaleString()} (+${new_infections.toLocaleString()})`);
+                    $('.stat.deaths > .stat_inner').html(`${total_deaths.toLocaleString()} (+${new_deaths.toLocaleString()})`);
+                    $('.stat.recoveries > .stat_inner').html(`${recoveries.toLocaleString()}`);
+                    $('.stat.critical > .stat_inner').html(`${critical.toLocaleString()}`);
+                    let table = $('#table > table').DataTable({
+                        data: data_to_render,
+                        paging: false,
+                        searching: true,
+                    });
+                    $('.save').click(function() {
+                        let csv = "data:text/csv;charset=utf-8,";
+                        let csv_data = data.latest.json.map((c, i) => {
+                            return [
+                                i + 1,
+                                c.name,
+                                c.all_cases,
+                                c.all_deaths,
+                                c.new_cases,
+                                c.new_deaths,
+                                c.recoveries,
+                                c.critical,
+                                c.per1mpop,
+                            ];
+                        });
+                        csv_data.forEach((rowArray) => {
+                            let row = rowArray.join(",");
+                            csv += row + "\r\n";
+                        });
+                        csv_data.unshift([
+                            '#',
+                            'Country / Region',
+                            'Confirmed Infections',
+                            'Confirmed Deaths',
+                            'New Infections',
+                            'New Deaths',
+                            'Recoveries',
+                            'Critical',
+                            'Infections / 1 Million Population',
+                        ]);
+                        let encodedUri = encodeURI(csv);
+                        let link = document.createElement("a");
+                        link.style.display = 'none';
+                        link.setAttribute("href", encodedUri);
+                        link.setAttribute("download", "covid19_data_coronastats.csv");
+                        document.body.appendChild(link);
+                        link.click();
+                        $(link).remove();
+                    })
+                }
+            });
+        </script>
+    </footer>
+</body>
+</html>
