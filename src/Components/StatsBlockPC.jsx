@@ -2,9 +2,10 @@ import React from "react";
 import { toast } from "react-toastify"; 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLongArrowAltDown, faLongArrowAltUp, faQuestion } from "@fortawesome/free-solid-svg-icons";
+import Moment from "react-moment";
 
 const showHelpToast = () => {
-    toast(<><FontAwesomeIcon icon={faLongArrowAltUp} className="green" /><FontAwesomeIcon icon={faLongArrowAltDown} className="green" /> &amp; <FontAwesomeIcon icon={faLongArrowAltUp} className="red" /><FontAwesomeIcon icon={faLongArrowAltDown} className="red" /> indicate the <strong>Increase / Decrease</strong> &amp; <strong>Betterment / Worsening</strong> of the situation related to a statistic. <br/><br/> Death Rate &amp; Recovery Rate is calculated based on <strong>Closed Cases</strong>.</>, {
+    toast(<><FontAwesomeIcon icon={faLongArrowAltUp} className="green" /><FontAwesomeIcon icon={faLongArrowAltDown} className="green" /> &amp; <FontAwesomeIcon icon={faLongArrowAltUp} className="red" /><FontAwesomeIcon icon={faLongArrowAltDown} className="red" /> indicate the <strong>Increase / Decrease</strong> &amp; <strong>Betterment / Worsening</strong> of the situation related to a statistic between Today &amp; Yesterday. <br/><br/> Death Rate &amp; Recovery Rate is calculated based on <strong>Closed Cases</strong>.<br /><br />The start of a new day is <strong>GMT+0</strong>.</>, {
         autoClose: 6000,
         style: {
             color: '#000'
@@ -13,49 +14,49 @@ const showHelpToast = () => {
 }
 
 const StatsBlockPC = (props) => {
-    return(
-        <>
-        <div className="rightInnerTopRightInnerBottom">
-            <div className="blockTopTitle mapChartTitle">Virus Statistics <span onClick={showHelpToast} className="tooltipSpan"><FontAwesomeIcon icon={faQuestion} /></span></div>
-                                    <div className="rightTopPieChartBottom">
-        <div id="virusStatsBlock2" className="virusStatsBlock">
-                                <div className="virusStatsBlockItem">
-                                    <div className="virusStatsBlockItemInner">
+        return (
+            <>
+                <div className="rightInnerTopRightInnerBottom">
+                    <div className="blockTopTitle mapChartTitle">Virus Statistics <span onClick={showHelpToast} className="tooltipSpan"><FontAwesomeIcon icon={faQuestion} /></span></div>
+                    <div className="rightTopPieChartBottom">
+                        <div id="virusStatsBlock2" className="virusStatsBlock">
+                            <div className="virusStatsBlockItem">
+                                <div className="virusStatsBlockItemInner">
                                     <span className="title recoveryRate">Recovery Rate</span>
                                     <span id="recoveryRateAlt" className="data"><span className="virusStatsBlockIcon">{props.comparison.recoveryRate === 2 ? <></> : props.comparison.recoveryRate === 1 ? <FontAwesomeIcon icon={faLongArrowAltUp} className="green" /> : <FontAwesomeIcon icon={faLongArrowAltDown} className="red" />}</span> {props.general.recovery_rate_p}%</span>
-                                    </div>
                                 </div>
-                                <div className="virusStatsBlockItem">
-                                    <div className="virusStatsBlockItemInner">
+                            </div>
+                            <div className="virusStatsBlockItem">
+                                <div className="virusStatsBlockItemInner">
                                     <span className="title deathRate">Death Rate</span>
                                     <span id="deathRateAlt" className="data"><span className="virusStatsBlockIcon">{props.comparison.deathRate === 2 ? <></> : props.comparison.deathRate === 1 ? <FontAwesomeIcon icon={faLongArrowAltUp} className="red" /> : <FontAwesomeIcon icon={faLongArrowAltDown} className="green" />}</span> {props.general.death_rate_p}%</span>
-                                    </div>
                                 </div>
-                                <div className="virusStatsBlockItem">
-                                    <div className="virusStatsBlockItemInner">
+                            </div>
+                            <div className="virusStatsBlockItem">
+                                <div className="virusStatsBlockItemInner">
                                     <span className="title survivalRate">Mild Cases</span>
                                     <span id="activeRateAlt" className="data"><span className="virusStatsBlockIcon">{props.comparison.activeCases === 2 ? <></> : props.comparison.activeCases === 1 ? <FontAwesomeIcon icon={faLongArrowAltUp} className="red" /> : <FontAwesomeIcon icon={faLongArrowAltDown} className="green" />}</span> {props.general.active_cases_p}%</span>
-                                    </div>
                                 </div>
-                                <div className="virusStatsBlockItem">
-                                    <div className="virusStatsBlockItemInner">
+                            </div>
+                            <div className="virusStatsBlockItem">
+                                <div className="virusStatsBlockItemInner">
                                     <span className="title criticalRate">Critical Cases</span>
                                     <span id="criticalRateAlt" className="data"><span className="virusStatsBlockIcon">{props.comparison.criticalRate === 2 ? <></> : props.comparison.criticalRate === 1 ? <FontAwesomeIcon icon={faLongArrowAltUp} className="red" /> : <FontAwesomeIcon icon={faLongArrowAltDown} className="green" />}</span> {props.general.critical_rate_p}%</span>
-                                    </div>
                                 </div>
-                                <div className="virusStatsBlockItem hlp">
-                                    <div className="virusStatsBlockItemInner">
+                            </div>
+                            <div className="virusStatsBlockItem hlp">
+                                <div className="virusStatsBlockItemInner">
                                     <span className="title infectedRate">Affected Countries</span>
                                     <span id="affectedCountries2" className="data">{props.general.affected_countries}</span>
-                                    </div>
                                 </div>
-                                <div className="virusStatsBlockItem hlp">
-                                    <div className="virusStatsBlockItemInner">
-                                    <span className="title survivalRate">Incubation Period</span>
-                                    <span className="data">1-14 Days</span>
-                                    </div>
+                            </div>
+                            <div className="virusStatsBlockItem hlp">
+                                <div className="virusStatsBlockItemInner">
+                                    <span className="title survivalRate">Outbreak Started</span>
+                                    <span className="data"><Moment diff="2019-12-01 12:00:00" unit="days" /> days ago</span>
                                 </div>
-                                {/*<div className="virusStatsBlockItem fullWidth">
+                            </div>
+                            {/*<div className="virusStatsBlockItem fullWidth">
                                     <div className="virusStatsBlockItemInner counterInner">
                                     <span className="title dssbRate hlp">Outbreak Started</span>
                                     <div className="counterInnerOverlay">
@@ -79,8 +80,8 @@ const StatsBlockPC = (props) => {
                                     </div>
                                     </div>
                                 </div>*/}
-                                </div></div></div></>
-    )
+                        </div></div></div></>
+        )
 }
 
 export default StatsBlockPC;

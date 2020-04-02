@@ -17,7 +17,7 @@ const AppLoader = (props) => {
                     Loading...  <FontAwesomeIcon icon={faCircleNotch} spin />
                 </div>
                 <div id="app_loader_footer">
-                    <a target="_blank" href="https://twitter.com/coronastatsco" rel="noopener noreferrer"><FontAwesomeIcon icon={faTwitter} /> Follow me on Twitter</a>
+                    <a target="_blank" href="https://twitter.com/coronastatsco" rel="noopener noreferrer nofollow"><FontAwesomeIcon icon={faTwitter} /> Follow me on Twitter</a>
                 </div>
             </div>
         )

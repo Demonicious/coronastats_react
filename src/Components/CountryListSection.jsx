@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import UpdateInfo from "./SubComponents/UpdateInfo";
 import SortDropDown from "./SubComponents/SortDropDown";
 import CountrySideList from "./SubComponents/CountrySideList";
@@ -10,23 +10,17 @@ const CountryListSection = (props) => {
     const [query, setQuery] = useState('');
     const [mode, setMode] = useState('new_cases');
     const [country, setCountry] = useState(null);
-    const [countryItem, setCountryItem] = useState(null);
-
-    useEffect(() => {
-        if(country != null)
-            setCountryItem(props.country_stats.filter((c) => c.name === country)[0]);
-    }, [country, props, setCountryItem]);
-
+    const countryItem = country ? props.country_stats.filter((c) => c.name === country)[0] : null;
     return(
         <>
-            <CountryDetailsBackdrop setCountryItem={() => { setCountry(null); setCountryItem(null)}} country={countryItem} />
+            <CountryDetailsBackdrop countryDataTables={props.countryDataTables} setCountryItem={() => { setCountry(null); }} country={countryItem} />
             <div className="sidebarCountrySearch">
                 <UpdateInfo time={props.time} />
                 <>
-                <input onChange={(e) => setQuery(e.target.value)} value={query} id="searchText" autoFocus={true} autoComplete="search-affected-countries" type="text" name="Search" placeholder={`Search ${props.affected_countries} Regions`} className="searchCountryInput" />
-                {
-                    query !== '' ? <FontAwesomeIcon icon={faTimesCircle} className="clearSearch" onClick={() => setQuery('')} /> : <></>
-                }
+                    <input onChange={(e) => setQuery(e.target.value)} value={query} id="searchText" autoFocus={true} autoComplete="nope" type="text" name="Search" placeholder={`Search ${props.affected_countries} Regions`} className="searchCountryInput" />
+                    {
+                        query !== '' ? <FontAwesomeIcon icon={faTimesCircle} className="clearSearch" onClick={() => setQuery('')} /> : <></>
+                    }
                 </>
                 <SortDropDown sort={(mode) => setMode(mode) } />
             </div>

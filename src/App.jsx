@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import AppLoader from "./Components/AppLoader";
 import DataBlocks from "./Components/DataBlocks";
@@ -15,8 +15,10 @@ import LogoDarkMode from "./Assets/images/logo.png";
 import LogoLightMode from "./Assets/images/logo_dark.png";
 
 import './Assets/style/toasts.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
-class StatsApp extends Component {
+class StatsApp extends PureComponent {
     constructor() {
         super();
 
@@ -30,22 +32,9 @@ class StatsApp extends Component {
     }
 
     async getStats() {
-        let res = await fetch(`https://api.jsonbin.io/b/5e8405812efc61772152cf38`, {
-            headers: {
-                'secret-key': '$2b$10$V5x.N0/phv3/FpejtIU60ed3OumyRHnwTT65zQJTRyyfPBUrxykI6'
-            }
-        });
+        let res = await fetch(`https://api.myjson.com/bins/150h88`);
         let data = await res.json();
         return data;
-    }
-
-    setSiteData(field, value) {
-        let site_data = JSON.parse(localStorage.getItem('site_data'));
-        site_data[field] = value;
-        this.setState({
-            site_data,
-        });
-        localStorage.setItem('site_data', JSON.stringify(site_data));
     }
 
     toggleMode() {
@@ -61,38 +50,58 @@ class StatsApp extends Component {
         return true;
     }
 
-    async componentDidMount() {
-        let site_data = localStorage.getItem('site_data');
-        let theme = localStorage.getItem('theme');
-        if(!site_data) {
-            site_data = {
-                views: 0,
-                arrows_toast: false,
-                coffee_toast: false,
-                share_modal: false,
-                prevention_guide: false,
-            };
-        } else site_data = JSON.parse(site_data);
+    toastFlow(views) {
+        let new_update_toast = localStorage.getItem('new_update_toast') || false;
+        let country_details_toast = localStorage.getItem('country_details_toast') || false;
+        let coffee_toast = localStorage.getItem('coffee_toast') || false;
+        let share_toast = localStorage.getItem('share_toast') || false;
 
-        site_data.views += 1;
+        if(!new_update_toast) {
+            toast(<><strong>Hey there!</strong><br /><br />Many users were facing <strong>Performance Issues</strong> on this website, So I re-created the website in React.<br /><br /><strong><a rel="noopener noreferrer nofollow" className="toastAnchor" target="_blank" href="https://coronastats.co/update"><FontAwesomeIcon icon={faExternalLinkAlt} /> See what changed</a></strong>.</>, {
+                autoClose: 10000,
+                closeOnClick: false,
+            });
+            localStorage.setItem('new_update_toast', 'true');
+        } else if(!country_details_toast && views >= 2) {
+            toast(<><strong>Hover / Touch</strong> a Country in the list to view general statistics.<br />Click the button on the left to view <strong>Detailed Statistics</strong> for a country.<br /><br />On PC, Click on a Country Bubble inside the Global Map to see general statistics.</>, {
+                autoClose: 10000
+            });
+            localStorage.setItem('country_details_toast', 'true');
+        } else if (!share_toast && views >= 3) {
+            toast(<><strong>Found my website useful ?</strong><br /><br />Please use the <strong>Share</strong> button to share it with your Friends, Family or Co-workers to keep them updated!</>, {
+                autoClose: 10000
+            });
+            localStorage.setItem('share_toast', 'true');
+        } else if (!coffee_toast && views >= 5) {
+            toast(<><strong>Like my website ?</strong><br /><br />If you found my website useful, Then I'd greatly appreciate It if you could buy me a coffee as It would support me &amp; help me out with server-costs too.<br /><br /><a href="https://ko-fi.com/R6R61HVEW" target="_blank" rel="noopener noreferrer nofollow" className="toastCoffee"><FontAwesomeIcon icon={faCoffee} /> Buy me a Coffee</a></>, {
+                autoClose: 10000,
+                closeOnClick: false,
+            });
+            localStorage.setItem('coffee_toast', 'true');
+        }
+    }
+
+    async componentDidMount() {
+        let views = localStorage.getItem('views') || 0;
+        let theme = localStorage.getItem('theme') || 'dark';
+        views = parseInt(views);
+        views += 1;
 
         let data = await this.getStats();
-        
         if(data && data.latest) {
             this.setState({
-                site_data,
+                views,
                 data,
                 processed: true,
-                theme: theme != null ? theme : 'dark',
+                theme,
             });
-        } else {
+        } else 
             toast.error('There was an error obtaining the required data. Please check your Internet Connection & Reload the Page.');
-        }
-
-        localStorage.setItem('site_data', JSON.stringify(site_data));
 
         this.updateTheme.bind(this);
         this.updateTheme();
+        this.toastFlow(views);
+        localStorage.setItem('views', views);
     }
 
     updateTheme() {
@@ -140,23 +149,38 @@ class StatsApp extends Component {
                             <StatsBlockPhone comparison={this.state.data.comparison} general={this.state.data.latest.state.general} />
                         </div>
                         <div className="sidebarCountrySection">
-                            <CountryListSection time={this.state.data.latest.time} country_stats={this.state.data.latest.state.country_stats} affected_countries={this.state.data.latest.state.general.affected_countries} />
+                            <CountryListSection countryDataTables={
+                                {
+                                    us: this.state.data.us_data,
+                                    pk: this.state.data.pk_data,
+                                    uk: this.state.data.uk_data,
+                                    es: this.state.data.spain_data,
+                                    de: this.state.data.germany_data,
+                                    in: this.state.data.india_data,
+                                    au: this.state.data.australia_data,
+                                    cn: this.state.data.china_data,
+                                    it: this.state.data.italy_data,
+                                }
+                            } time={this.state.data.latest.time} country_stats={this.state.data.latest.state.country_stats} affected_countries={this.state.data.latest.state.general.affected_countries} />
                             <FooterArea news={this.state.data.news} />
                         </div>
                     </div>
-                    <div className="rightSection">
-                        <div className="rightInnerTop">
-                            <WorldMap theme={this.state.theme} country_stats={this.state.data.latest.state.country_stats} /* mode={this.state.chart_mode} changeMode={(mode) => { this.changeChartMode.bind(this); this.changeChartMode(mode); } } */ />
-                            <div className="rightInnerTopRight">
-                                <TopRightPieChart distribution={this.state.data.latest.state.distribution} />
-                                <StatsBlockPC comparison={this.state.data.comparison} general={this.state.data.latest.state.general} />
+                    {
+                        window.innerWidth >= 993 ? <div className="rightSection">
+                            <div className="rightInnerTop">
+                                <WorldMap theme={this.state.theme} country_stats={this.state.data.latest.state.country_stats} /* mode={this.state.chart_mode} changeMode={(mode) => { this.changeChartMode.bind(this); this.changeChartMode(mode); } } */ />
+                                <div className="rightInnerTopRight">
+                                    <TopRightPieChart distribution={this.state.data.latest.state.distribution} />
+                                    <StatsBlockPC comparison={this.state.data.comparison} general={this.state.data.latest.state.general} />
+                                </div>
                             </div>
-                        </div>
-                        <div className="rightInnerBottom">
-                            <BottomLineChart lines={this.state.data.lines} />
-                            <BottomRightShare />
-                        </div>
-                    </div>
+                            <div className="rightInnerBottom">
+                                <BottomLineChart lines={this.state.data.lines} />
+                                <BottomRightShare />
+                            </div>
+                        </div> : <></>
+                    }
+                    
                     </div> : <></> }
             </>
         );

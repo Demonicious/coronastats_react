@@ -50,10 +50,11 @@ const CountrySideList = (props) => {
     return(
         <div id="countryStatsArea" className="searchCountryArea">
             {
-                country_list.map((c, i) => {
+                /* country_list.map((c, i) => {
                     if(c.name.toLowerCase().includes(props.query.toLowerCase()) || props.query === '')
                     return <CountrySideItem clickHandler={props.setCountry} key={i} data={c} />
-                })
+                }) */
+                country_list.filter(c => (c.name.toUpperCase().includes(props.query.toUpperCase()) || props.query === '')).map((c, i) => <CountrySideItem clickHandler={props.setCountry} key={i} data={c} />)
             }
         </div>
     )

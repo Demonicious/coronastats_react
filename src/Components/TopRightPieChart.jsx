@@ -2,7 +2,6 @@ import React from 'react'
 import { Doughnut } from "react-chartjs-2";
 
 export const TopRightPieChart = (props) => {
-    if(window.innerWidth >= 993) {
         const { distribution } = props;
         const codes = Object.keys(distribution);
         let data = {
@@ -62,9 +61,6 @@ export const TopRightPieChart = (props) => {
                 </div>
             </div>
         )
-    } else return(
-        <></>
-    )
 }
 
 export default TopRightPieChart;

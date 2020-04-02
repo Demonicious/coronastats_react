@@ -12,7 +12,7 @@
    ],
   "theme_color": "#27293d",
   "background_color": "#1e1e2f",
-  "start_url": "/",
+  "start_url": "/?ref=pwa",
   "display": "standalone",
   "orientation": "natural"
 }
