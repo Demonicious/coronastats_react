@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://coronastats.co/images/favicon.png" />
+    <title>Major Update - Live Coronavirus Tracker & News</title>
+    <style type="text/css">
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
+        html, body {
+            padding: 0;
+            margin: 0;
+            background: rgb(19, 19, 19);
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+        }
+
+        .container {
+            display: flex;
+            padding: 25px 0px;
+            justify-content: center;
+        }
+
+        .block {
+            max-width: 850px;
+            background: #333;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .article-logo img {
+            margin: 15px;
+        }
+
+        .red {
+            color: #fc2751;
+        }
+
+        .blue {
+            color: #02d0f6;
+        }
+
+        .article-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 25px;
+            border-radius: 5px;
+        }
+
+        .article-content .inner {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 0.9rem;
+            background: rgb(43, 43, 43);
+            border-radius: 5px;
+        }
+
+        .article-content .inner ul {
+            padding-left: 2rem;
+        }
+
+        a, a:hover, a:active, a:focus {
+            padding: 5px 10px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        .back-to-site {
+            line-height: 29px;
+            background: #7927fc;
+        }
+
+        .coffee {
+            float: right;
+            background: #fc2751;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="block">
+            <div class="article-logo">
+                <a target="_blank" href="https://coronastats.co"><img height="45" src="https://coronastats.co/images/logo.png" alt="coronastats.co" /></a>
+                <img height="45" src="https://www.freeiconspng.com/uploads/heart-icon-14.png" alt="loves" />
+                <a target="_blank" href="https://reactjs.org/"><img height="45" src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png" alt="react.js" /></a>
+            </div>
+            <div class="article-content">
+                <h2><span class="red">Coronastats</span> has shifted over to <span class="blue">React.js</span></h2>
+                <br>
+                <p>Many users reported that they were facing issues regarding the poor-performance of the website.<br><br>I was aware of this because, When I started development of this app.. The data-sets weren't really that big.<br>So I didn't bother to use "good coding practices" in my application, Which has been a catastrophic decision.<br>The data-sets became bigger and bigger, and the site couldn't keep up..<br><br>The site was built using Plain JavaScript with a little bit of jQuery. jQuery is a very old library and isn't recommended anymore, but I figured It'd be fine for the job... I was wrong!<br><br>Keeping this in mind, I decided to re-create the entire website using <span class="blue">React.js</span> which is a very popular<br>Front-end Building Library. I chose <span class="blue">React</span> because I was aware of it's many advantages in Single-page-apps & also that It would speed up developemnt time by a lot.</p>
+                <div class="inner">
+                    <h3>The following changes were made: </h3>
+                    <ul>
+                        <li>Website Completely Re-build in <span class="blue">React.js</span>.</li>
+                        <li>Major overall performance improvements.</li>
+                        <li>UI & UX Updates.</li>
+                        <li>Changed Bar-charts to High-performance Line-charts.</li>
+                        <li>Changed charting library from <span class="blue">amCharts4</span> to better performing <span class="red">chart.js</span>.</li>
+                        <li>Old Map replaced with Highly-detailed & Highly-performant Leaflet Worldmap.</li>
+                        <li>Replaced linear scales with Logarithmic scales.</li>
+                        <li>Added more sorting options.</li>
+                        <li>Improved performance of Country-Details Modals.</li>
+                        <li>Made improvements to the Light-theme.</li>
+                        <li></li>
+                        <li></li>
+                        <li>... Lastly, Stay Safe & Thank you for the continued support!</li>
+                    </ul>
+                </div>
+                <div class="inner">
+                    <a class="back-to-site" href="https://coronastats.co">Go to Website</a>
+                    <a class="coffee" target="_blank" href="https://ko-fi.com/R6R61HVEW">Buy me a Coffee</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -32,9 +32,14 @@ class StatsApp extends PureComponent {
     }
 
     async getStats() {
-        let res = await fetch(`https://api.myjson.com/bins/150h88`);
-        let data = await res.json();
-        return data;
+        try {
+            let res = await fetch(`https://api.myjson.com/bins/150h88`);
+            let data = await res.json();
+            return data;
+        } catch(e) {
+            toast.error('There was an error retrieving the data. Please make sure your internet is connected & Reload the page.');
+            console.error(e);
+        }
     }
 
     toggleMode() {
