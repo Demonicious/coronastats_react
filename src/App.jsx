@@ -16,7 +16,7 @@ import LogoLightMode from "./Assets/images/logo_dark.png";
 
 import './Assets/style/toasts.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCoffee, faExternalLinkAlt, faLongArrowAltUp, faLongArrowAltDown } from "@fortawesome/free-solid-svg-icons";
 
 class StatsApp extends PureComponent {
     constructor() {
@@ -33,7 +33,7 @@ class StatsApp extends PureComponent {
 
     async getStats() {
         try {
-            let res = await fetch(`https://api.myjson.com/bins/150h88`);
+            let res = await fetch(`https://public.coronastats.co/data.json?v=${Math.round(Math.random() * 1000000)}`);
             let data = await res.json();
             return data;
         } catch(e) {
@@ -60,19 +60,28 @@ class StatsApp extends PureComponent {
         let country_details_toast = localStorage.getItem('country_details_toast') || false;
         let coffee_toast = localStorage.getItem('coffee_toast') || false;
         let share_toast = localStorage.getItem('share_toast') || false;
+        let stats_toast = localStorage.getItem('stats_toast') || false;
 
         if(!new_update_toast) {
-            toast(<><strong>Hey there!</strong><br /><br />Many users were facing <strong>Performance Issues</strong> on this website, So I re-created the website in React.<br /><br /><strong><a rel="noopener noreferrer nofollow" className="toastAnchor" target="_blank" href="https://coronastats.co/update"><FontAwesomeIcon icon={faExternalLinkAlt} /> See what changed</a></strong>.</>, {
+            toast(<><strong>Hey there!</strong><br /><br />Many users were facing <strong>Performance Issues</strong> on this website, So I re-built the website from scratch to tackle them.<br /><br /><strong><a rel="noopener noreferrer nofollow" className="toastAnchor" target="_blank" href="https://coronastats.co/update"><FontAwesomeIcon icon={faExternalLinkAlt} /> See what changed</a></strong>.</>, {
                 autoClose: 10000,
                 closeOnClick: false,
             });
             localStorage.setItem('new_update_toast', 'true');
         } else if(!country_details_toast && views >= 2) {
-            toast(<><strong>Hover / Touch</strong> a Country in the list to view general statistics.<br />Click the button on the left to view <strong>Detailed Statistics</strong> for a country.<br /><br />On PC, Click on a Country Bubble inside the Global Map to see general statistics.</>, {
+            toast(<><strong>Hover / Touch</strong> a Country in the list to view general statistics.<br />Click the button on the left to view <strong>Detailed Statistics</strong> for a country.<br /><br />On PC, Click on a Country Bubble inside the Global Map to see general statistics.<br/><br/>You may toggle Data-sets in the Bar Charts by Clicking on their icon.</>, {
                 autoClose: 10000
             });
             localStorage.setItem('country_details_toast', 'true');
-        } else if (!share_toast && views >= 3) {
+        } else if(!stats_toast && views >= 3) {
+            toast(<><FontAwesomeIcon icon={faLongArrowAltUp} className="green" /><FontAwesomeIcon icon={faLongArrowAltDown} className="green" /> &amp; <FontAwesomeIcon icon={faLongArrowAltUp} className="red" /><FontAwesomeIcon icon={faLongArrowAltDown} className="red" /> indicate the <strong>Increase / Decrease</strong> &amp; <strong>Betterment / Worsening</strong> of the situation related to a statistic between Today &amp; Yesterday. <br /><br /> Death Rate &amp; Recovery Rate is calculated based on <strong>Closed Cases</strong>.<br /><br />The start of a new day is <strong>GMT+0</strong>.</>, {
+                autoClose: 6000,
+                style: {
+                    color: '#000'
+                }
+            });
+            localStorage.setItem('stats_toast', 'true');
+        } else if (!share_toast && views >= 4) {
             toast(<><strong>Found my website useful ?</strong><br /><br />Please use the <strong>Share</strong> button to share it with your Friends, Family or Co-workers to keep them updated!</>, {
                 autoClose: 10000
             });

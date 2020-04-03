@@ -250,12 +250,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
 /* visual tweaks */
 
 .leaflet-container {
-	background: #222222;
+	background: #d5e8eb;
 	outline: 0;
 	}
-.light-mode .leaflet-container {
-	background: #ffffff !important;
-}
 .leaflet-container a {
 	color: #bf3b55;
 	}
@@ -404,14 +401,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
 /* attribution and scale controls */
 
 .leaflet-container .leaflet-control-attribution {
-	color: rgb(154, 154, 159);
-	background: rgba(44, 44, 44, 0.7);
-	margin: 0;
-	}
-.light-mode .leaflet-control-attribution {
 	color: rgb(110, 110, 110);
 	background: rgb(239, 239, 239);
-}
+	margin: 0;
+	}
+/* .light-mode .leaflet-control-attribution {
+	color: rgb(110, 110, 110);
+	background: rgb(239, 239, 239);
+} */
 .leaflet-control-attribution,
 .leaflet-control-scale-line {
 	padding: 0 5px;

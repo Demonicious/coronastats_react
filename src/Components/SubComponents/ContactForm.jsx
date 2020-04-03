@@ -36,7 +36,8 @@ export const ContactForm = (props) => {
     }
 
     return (
-        <div className={"modal " + props.showForm} id="modalContact">
+        props.showForm === 'is-visible' ?
+        <div className="modal is-visible" id="modalContact">
             <div className="modal-dialog">
                 <section className="modal-content">
                     <button onClick={() => props.toggle()} className="close-modal" aria-label="close modal" data-close>✕</button>
@@ -61,6 +62,6 @@ export const ContactForm = (props) => {
                     </div>
                 </section>
             </div>
-        </div>
+        </div> : <></>
     )
 }

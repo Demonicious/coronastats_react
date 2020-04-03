@@ -26,8 +26,8 @@ const FooterMoreLinks = (props) => {
         <span ref={wrapperRef} onClick={e => mode === 'show' ? setMode('hide') : setMode('show')} className="bottomShareAreaIcon latestNewsBtn bottomMoreBtn" id="usefulLinksBtn"><FontAwesomeIcon icon={faPlus} /> More
             <div id="usefulLinks" className={'bottomPagesDropdown ' + mode}>
             <a onClick={() => props.toggleVideo()} href><FontAwesomeIcon icon={faVideo} /> Coronavirus Explained</a>
-            <a onClick={() => props.toggleSources()} href><FontAwesomeIcon icon={faProjectDiagram} /> Data Sources</a>
-            <a onClick={() => props.toggleDisclaimer()} href><FontAwesomeIcon icon={faUserSecret} />Disclaimer &amp; Privacy Policy</a>
+            <a href="https://coronastats.co/sources.html" target="_blank" rel="noopener noreferrer nofollow"><FontAwesomeIcon icon={faProjectDiagram} /> Data Sources</a>
+            <a href="https://coronastats.co/disclaimer.html" target="_blank" rel="noopener noreferrer nofllow"><FontAwesomeIcon icon={faUserSecret} />Disclaimer &amp; Privacy Policy</a>
             <a href="https://twitter.com/coronastatsco" rel="noopener noreferrer nofollow" target="_blank"><FontAwesomeIcon icon={faTwitter} /> Follow on Twitter</a>
             <a onClick={() => props.toggle()} href><FontAwesomeIcon icon={faEnvelope} /> Drop me a Message</a>
             <a href="https://chrome.google.com/webstore/detail/live-coronavirus-tracker/ohgihjjamahlilnoifoicncfnlpmbcgk" rel="noopener noreferrer nofollow" target="_blank"><FontAwesomeIcon icon={faChrome} /> Install Chrome Extension</a>

@@ -25,6 +25,14 @@ export const TopRightPieChart = (props) => {
             }],
         }
         let options = {
+            tooltips: {
+                enabled: 'true',
+                callbacks: {
+                    label: function(tooltipItems, data) {
+                        return data['labels'][tooltipItems['index']] + ' - ' + data['datasets'][0]['data'][tooltipItems['index']] + '%';
+                    }
+                }
+            },
             layout: {
                 padding: {
                     left: 15,
@@ -53,7 +61,7 @@ export const TopRightPieChart = (props) => {
 
         return (
             <div className="rightInnerTopRightInnerTop">
-                <div className="blockTopTitle mapChartTitle">Infection Distribution (%) <span id="lastUpdated" /></div>
+                <div className="blockTopTitle mapChartTitle">Infection Distribution <span id="lastUpdated" /></div>
                 <div id="countriesPieChart" className="rightTopPieChartTop">
                     <div style={{width: '100%', height: '100%'}}>
                         <Doughnut options={options} data={data} />

@@ -7,6 +7,8 @@ export const NewsLink = (props) => {
     Object.keys(props.news).map((i) => news.push(props.news[i]));
     return (
         <>
+            {
+                mode === 'backdropShow' ?
             <div className={"backdrop latestNewsDropOpen " + mode}>
                 <div className="backdropInnerMain latestNewsDropOpenInner">
                     <div className="backdropInner">
@@ -24,7 +26,8 @@ export const NewsLink = (props) => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> : <></>
+            }
             <span onClick={() => setMode('backdropShow')} className="bottomShareAreaIcon latestNewsBtn latestNewsDrop liveNewsBTN"><span className="pulse" />Live News</span>
         </>
     );

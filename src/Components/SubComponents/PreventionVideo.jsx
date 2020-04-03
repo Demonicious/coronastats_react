@@ -2,7 +2,8 @@ import React from 'react'
 
 export const PreventionVideo = (props) => {
     return (
-        <div className={"modal preventionVideo " + props.showForm} id="modalPreventions">
+        props.showForm === 'is-visible' ?
+        <div className={"modal preventionVideo is-visible"} id="modalPreventions">
             <div className="modal-dialog">
                 <section className="modal-content">
                     <button onClick={() => props.toggle()} className="close-modal" aria-label="close modal" data-close>✕</button>
@@ -19,6 +20,6 @@ export const PreventionVideo = (props) => {
                     </div>
                 </section>
             </div>
-        </div>
+        </div> : <></>
     )
 }

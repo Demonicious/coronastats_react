@@ -6,22 +6,24 @@ export default function makeLineChart(lines) {
                     data: [],
                     label: 'New Deaths',
                     pointBorderWidth: 3,
-                    // backgroundColor: 'rgba(255, 65, 108, 0.6)',
-                    borderColor: '#c5163e'
+                    borderColor: 'rgba(255, 65, 108, 0.6)',
+                    backgroundColor: '#fc2751',
+                    hidden: true,
                 },
                 {
                     data: [],
                     label: 'Critical Cases',
                     pointBorderWidth: 3,
-                    // backgroundColor: 'rgba(255, 201, 40, 0.6)',
-                    borderColor: '#c5970d',
+                    borderColor: 'rgba(255, 201, 40, 0.6)',
+                    backgroundColor: '#eccf00',
+                    hidden: true,
                 },
                 {
                     data: [],
                     label: 'New Cases',
                     pointBorderWidth: 3,
-                    // backgroundColor: 'rgba(172, 119, 249, 0.6)',
-                    borderColor: '#732ed8',
+                    borderColor: 'rgba(172, 119, 249, 0.6)',
+                    backgroundColor: '#9052ea',
                 },
             ]
         }

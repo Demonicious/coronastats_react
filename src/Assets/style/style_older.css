@@ -633,7 +633,7 @@ body {
   width: 330px;
   background: #222222;
   position: relative;
-  /* box-shadow: 0px 5px 7px -2px #000000a3; */
+  box-shadow: 0px 5px 7px -2px #000000a3;
 }
 .leftSectionLogoAreaMain {
   padding: 15px;
@@ -670,7 +670,7 @@ body {
   flex-direction: column;
   padding: 7px;
   line-height: 1;
-  /* box-shadow: 0px 5px 7px -2px #000000a3; */
+  box-shadow: 0px 5px 7px -2px #000000a3;
 }
 .sidebarStatsSection .sidebarStatsBlocksMain:nth-child(1) .sidebarStatsBlocks {
   color: #ac77f9;
@@ -743,7 +743,7 @@ body {
   width: 100%;
   align-items: center;
   margin-bottom: 15px;
-  /* box-shadow: 0px 5px 7px -2px #000000a3; */
+  box-shadow: 0px 5px 7px -2px #000000a3;
 }
 .searchCountryInput {
   flex: 1;
@@ -798,7 +798,7 @@ body {
   background: #333333;
   min-width: 180px;
   border-radius: 4px;
-  /* box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3); */
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
   padding: 10px;
   visibility: hidden;
   display: none;
@@ -1077,7 +1077,7 @@ body {
   height: 250px;
   background: #222222;
   border-radius: 4px;
-  /* box-shadow: 0px 5px 7px -2px #000000a3; */
+  box-shadow: 0px 5px 7px -2px #000000a3;
 }
 .rightBottomShare .share h2 {
   text-align: center;
@@ -1133,7 +1133,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  /* box-shadow: 0px 5px 7px -2px #000000a3; */
+  box-shadow: 0px 5px 7px -2px #000000a3;
 }
 .bottomLineChartAreaMain {
   flex: 1;
@@ -1162,7 +1162,7 @@ body {
   flex-direction: column;
   position: relative;
   flex: 1;
-  /* box-shadow: 0px 5px 7px -2px #000000a3; */
+  box-shadow: 0px 5px 7px -2px #000000a3;
 }
 .mapChartTitleMain {
   display: flex;
@@ -1269,7 +1269,7 @@ body {
   padding: 15px;
   display: flex;
   flex-direction: column;
-  /* box-shadow: 0px 5px 7px -2px #000000a3; */
+  box-shadow: 0px 5px 7px -2px #000000a3;
 }
 .rightSection .rightInnerTopRight .rightInnerTopRightInnerTop {
   flex: 1;
@@ -1405,7 +1405,7 @@ body {
   background: #333333;
   min-width: 218px;
   border-radius: 2px;
-  /* box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3); */
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.3);
   padding: 5px 10px;
   visibility: hidden;
   display: none;
@@ -1473,7 +1473,7 @@ body {
   flex-direction: column;
   padding: 7px;
   line-height: 1;
-  /* box-shadow: 0px 5px 7px -2px #000000a3; */
+  box-shadow: 0px 5px 7px -2px #000000a3;
 }
 .backdropContent
   .virusStatsBlock
@@ -1713,7 +1713,7 @@ label {
   border-radius: 100px;
   padding: 0 13px;
   line-height: 29px;
-  /* box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
 }
 .clickToUpdate:hover {
   color: #61ce81;
@@ -1744,7 +1744,7 @@ label {
   background: #333333 !important;
   color: #fff !important;
   border-color: #333333 !important;
-  /* box-shadow: 0px 5px 7px -2px #000000a3; */
+  box-shadow: 0px 5px 7px -2px #000000a3;
 }
 .modal.preventionVideo .modal-content {
   background: transparent;
@@ -1906,15 +1906,17 @@ label {
   .bottomMoreBtn {
     background: #222222 !important;
     border-color: #222222 !important;
-    /* box-shadow: 0px 5px 7px -2px #00000033 !important; */
+    box-shadow: 0px 5px 7px -2px #00000033 !important;
   }
 
   .bottomShareAreaIcon.liveNewsBTN {
     background: #222222 !important;
     border-color: #222222 !important;
-    /* box-shadow: 0px 5px 7px -2px #00000033 !important; */
+    box-shadow: 0px 5px 7px -2px #00000033 !important;
   }
-
+  .bottomShareAreaIcon.coffeeDrop {
+    box-shadow: 0px 5px 7px -2px #00000033 !important;
+  }
   .virusStatsBlock .virusStatsBlockItem .virusStatsBlockItemInner {
     box-shadow: none !important;
   }
@@ -1998,7 +2000,7 @@ label {
   height: 90%;
   position: absolute;
   z-index: 33333;
-  /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25); */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   padding: 20px;
   bottom: -300%;
   transition: all 0.3s ease-in-out;
@@ -2102,7 +2104,7 @@ label {
   vertical-align: middle;
   border-radius: 10px;
   background-color: #3cd483;
-  /* box-shadow: 0 0 0 2px #fff; */
+  box-shadow: 0 0 0 2px #fff;
 }
 .liveNews:after {
   content: "";
@@ -2344,14 +2346,14 @@ a.shareLinkpmt.coffee {
   color: #fff;
   background: #333333;
   border: solid 1px #333333;
-  /* box-shadow: 0px 5px 7px -2px #000000a3; */
+  box-shadow: 0px 5px 7px -2px #000000a3;
 }
 
 .bottomShareAreaIcon.coffeeDrop {
   background: #fc2751;
   border-color: #fc2751;
   color: #fff;
-  /* box-shadow: 0px 5px 7px -2px #000000a3; */
+  box-shadow: 0px 5px 7px -2px #000000a3;
 }
 
 .liveNewsBTN span.pulse {
@@ -2581,7 +2583,7 @@ a.shareLinkpmt.coffee {
   margin-right: 3px;
   height: 330px;
   overflow: hidden;
-  /* box-shadow: 0px 5px 7px -2px #000000a3; */
+  box-shadow: 0px 5px 7px -2px #000000a3;
 }
 #countryDataChartDraw {
   position: relative;
@@ -2601,26 +2603,26 @@ body.light-mode .mainSection {
 body.light-mode .leftSection {
   background: #ffffff;
   border-right: solid 1px #e6e6e6;
-  /* box-shadow: 0px 0px 0px 1px #dcdcdc, 0px 5px 5px -4px #00000033; */
+  box-shadow: 0px 0px 0px 1px #dcdcdc, 0px 5px 5px -4px #00000033;
 }
 body.light-mode .MapChartArea {
   background: #d5e8eb;
-  /* box-shadow: 0px 0px 0px 1px #dcdcdc, 0px 5px 5px -4px #00000033; */
+  box-shadow: 0px 0px 0px 1px #dcdcdc, 0px 5px 5px -4px #00000033;
 }
 body.light-mode .MapChartArea #worldWideCharts {
   color: #2c4d52 !important;
 }
 body.light-mode .bottomLineChartArea {
   background: #ffffff;
-  /* box-shadow: 0px 0px 0px 1px #dcdcdc, 0px 5px 5px -4px #00000033; */
+  box-shadow: 0px 0px 0px 1px #dcdcdc, 0px 5px 5px -4px #00000033;
 }
 body.light-mode .rightSection .rightInnerTopRight {
   background: #ffffff;
-  /* box-shadow: 0px 0px 0px 1px #dcdcdc, 0px 5px 5px -4px #00000033; */
+  box-shadow: 0px 0px 0px 1px #dcdcdc, 0px 5px 5px -4px #00000033;
 }
 body.light-mode .rightBottomShare {
   background: #ffffff;
-  /* box-shadow: 0px 0px 0px 1px #dcdcdc, 0px 5px 5px -4px #00000033; */
+  box-shadow: 0px 0px 0px 1px #dcdcdc, 0px 5px 5px -4px #00000033;
 }
 body.light-mode
   .virusStatsBlock
@@ -2630,7 +2632,7 @@ body.light-mode
   border: #dcdcdc 1px solid;
   font-weight: 400;
   color: #676767;
-  /* box-shadow: 0px 5px 5px -4px #00000033; */
+  box-shadow: 0px 5px 5px -4px #00000033;
 }
 body.light-mode
   .virusStatsBlock
@@ -2663,12 +2665,14 @@ body.light-mode
   .title.criticalRate {
   color: #c5970d;
 }
-
+body.light-mode #countryDataChart {
+  box-shadow: 0px 5px 7px -2px #00000033;
+}
 body.light-mode .sidebarStatsSection .sidebarStatsBlocks {
   background: #efefef;
   border: #dcdcdc 1px solid;
   color: #676767;
-  /* box-shadow: 0px 5px 7px -2px #00000033; */
+  box-shadow: 0px 5px 7px -2px #00000033;
 }
 body.light-mode .infoTab {
   background: #efefef;
@@ -2686,7 +2690,7 @@ body.light-mode .sidebarStatsSection .sidebarStatsBlocks .title {
 }
 body.light-mode .sidebarCountrySearch {
   background: #efefef;
-  /* box-shadow: 0px 0px 0px 1px #dcdcdc; */
+  box-shadow: 0px 0px 0px 1px #dcdcdc;
 }
 body.light-mode .sidebarSearchUpdatedTxt {
   background: #e4e4e49c;
@@ -2698,14 +2702,16 @@ body.light-mode .bottomShareAreaIcon.liveNewsBTN {
   color: #7d7d7d;
   background: #efefef;
   border: solid 1px #dcdcdc;
-  /* box-shadow: 0px 5px 7px -2px #00000033; */
+  box-shadow: 0px 5px 7px -2px #00000033;
 }
-
+body.light-mode .bottomShareAreaIcon.coffeeDrop {
+  box-shadow: 0px 5px 7px -2px #00000033;
+}
 body.light-mode .bottomMoreBtn {
   color: #7d7d7d !important;
   background: #efefef !important;
   border: solid 1px #dcdcdc !important;
-  /* box-shadow: 0px 5px 7px -2px #00000033; */
+  box-shadow: 0px 5px 7px -2px #00000033;
 }
 body.light-mode .searchCountryAreaItemDetailsTitle {
   color: #4e4e4e;
@@ -2742,7 +2748,7 @@ body.light-mode .backdropCloseIcon {
 }
 body.light-mode .bottomPagesDropdown {
   background: #f7f7f7;
-  /* box-shadow: 0 1px 7px rgba(0, 0, 0, 0.14); */
+  box-shadow: 0 1px 7px rgba(0, 0, 0, 0.14);
 }
 body.light-mode .bottomPagesDropdown a {
   color: #757575;
@@ -3003,7 +3009,7 @@ body.light-mode .depthData.accordion .accordion-item:hover::after {
   background-color: #fff;
   border-radius: 50%;
   border: 5px solid #e3e3c7;
-  /* box-shadow: #e3e3c7 -28px 0 0 -3px, #e3e3c7 -8px 24px 0 -2px; */
+  box-shadow: #e3e3c7 -28px 0 0 -3px, #e3e3c7 -8px 24px 0 -2px;
   transform-origin: -6px 130%;
 }
 .toggle--daynight .toggle--checkbox:checked + .toggle--btn {
@@ -3337,7 +3343,7 @@ span.milPOP {
   font-weight: 300;
   padding: 2px 6px;
   background: #333333b8;
-  border-radius: 3px;
+  border-radius: 13px;
 }
 .backdropHeader span.milPOP {
   position: relative;

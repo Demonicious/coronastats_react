@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { toast } from "react-toastify";
-import { Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import LineChartMaker from "./../../Lib/LineChartMaker";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faCircleNotch } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +18,7 @@ export class CountryDetailsBackdrop extends PureComponent {
 
   async getCountrySpecificLines(name) {
     name = name.toLowerCase().replace('.', '').replace(/\s+/g, '').trim();
-    let res = await fetch(`https://api.myjson.com/bins/17c2hk`);
+    let res = await fetch(`https://public.coronastats.co/spain.json?v=${Math.round(Math.random() * 1000000)}`);
     let data = await res.json();
     return data;
   }
@@ -122,7 +122,7 @@ export class CountryDetailsBackdrop extends PureComponent {
                   {
                           this.state.chartData ?
                           <div style={{width: '100%', height: '100%'}} id="countryDataChart">
-                            <Line data={this.state.chartData[0]} options={this.state.chartData[1]} />
+                            <Bar data={this.state.chartData[0]} options={this.state.chartData[1]} />
                           </div>
                           : 
                           <div className="chartLoader">

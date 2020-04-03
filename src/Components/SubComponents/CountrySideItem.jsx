@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartBar, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faChartBar } from "@fortawesome/free-solid-svg-icons";
 
 const CountrySideItem = (props) => {
     const { data } = props;
@@ -62,7 +62,7 @@ const CountrySideItem = (props) => {
     let new_deaths = data.new_deaths === 0 ? <></> : <span className="newDeaths">+{data.new_deaths.toLocaleString()} Deaths {/* {deaths.arrow} {deaths.percent} */}</span>
 
     return(
-        <div className="searchCountryAreaItem countryItem countryDrop">
+        <div style={props.style} className="searchCountryAreaItem countryItem countryDrop">
         <div className="searchCountryAreaOverlay">
             <div className="overlayBlocks countryOverlayLap"><img alt={data.code} width={30} height={30} src={data.flag} className="img-responsivee" /><span className="overlayBlocksSubTitle countryNameBlock">{data.name}</span></div>
             <div className="overlayBlocks">{data.all_cases.toLocaleString()}<span className="overlayBlocksSubTitle">Infections</span></div>
@@ -73,7 +73,7 @@ const CountrySideItem = (props) => {
         </div>
         <div className="searchCountryAreaItemImg"><img alt={data.code} width={30} height={30} src={data.flag} className="img-responsivee" /></div>
         <div className="searchCountryAreaItemDetails">
-                <div className="searchCountryAreaItemDetailsTitle countryItemName">{data.name} <span className="milPOP">{data.per1mpop.toLocaleString()} / 1M <FontAwesomeIcon icon={faUsers} /></span></div>
+                <div className="searchCountryAreaItemDetailsTitle countryItemName">{data.name} <span className="milPOP">{data.per1mpop.toLocaleString()} / 1M</span></div>
             <div className="searchCountryLastUpdate"><span className="newCasesSubtitle">{data.all_cases.toLocaleString()} Cases</span> <span className="ampersAnd">&amp;</span> <span className="newDeathsSubtitle">{data.all_deaths.toLocaleString()} Deaths</span></div>
         </div>
         {/*<div className="searchCountryAreaItemSickNp dataSm"><div className="newCases">{new_cases} { cases.arrow } <span className={"smPercentage " + cases.class}>{cases.percent}</span></div><div className="newDeaths">{new_deaths} { deaths.arrow } <span className={"smPercentage " + deaths.class}>{deaths.percent}</span></div></div>*/}

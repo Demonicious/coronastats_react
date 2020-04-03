@@ -20,7 +20,8 @@
     "react-leaflet": "^2.6.3",
     "react-moment": "^0.9.7",
     "react-scripts": "3.4.1",
-    "react-toastify": "^5.5.0"
+    "react-toastify": "^5.5.0",
+    "react-window": "^1.8.5"
   },
   "scripts": {
     "start": "react-scripts start",

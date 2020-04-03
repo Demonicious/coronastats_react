@@ -8,6 +8,8 @@ export const ShareModal = () => {
     const [mode, setMode] = useState('hide');
     return (
         <>
+            {
+                mode === 'show' ?
             <div id="shareModalMain" className={"share-modelMain " + mode}>
                 <div onClick={() => setMode('hide')} id="shareClose" className="shareDropBtn"><span aria-hidden="true">&times;</span></div>
                 <div className="contentHoder">
@@ -24,7 +26,8 @@ export const ShareModal = () => {
                         <CopyLink />
                     </div>
                 </div>
-            </div>
+            </div> : <></>
+            }
             <span onClick={() => setMode('show')} className="bottomShareAreaIcon latestNewsBtn liveNewsBTN other shareDropBtn" id="shareDropBtn"><FontAwesomeIcon className="m-r-2" icon={faShareAlt} /> Share</span>
         </>
     )

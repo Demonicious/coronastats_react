@@ -1,4 +1,5 @@
 import React from "react";
+import { FixedSizeList as ListView } from "react-window";
 import CountrySideItem from "./CountrySideItem";
 
 const sort = (country_list, mode) => {
@@ -46,17 +47,26 @@ const sort = (country_list, mode) => {
 }
 
 const CountrySideList = (props) => {
+    console.log(props);
     const country_list = sort(props.country_stats, props.sort);
+    const toRender = country_list.filter(c => (c.name.toUpperCase().includes(props.query.toUpperCase()) || props.query === ''));
+    
+    const Row = ({index, style}) => {
+        return(
+            <CountrySideItem clickHandler={props.setCountry} style={style} data={toRender[index]} />
+        );
+    }
+
     return(
-        <div id="countryStatsArea" className="searchCountryArea">
-            {
-                /* country_list.map((c, i) => {
-                    if(c.name.toLowerCase().includes(props.query.toLowerCase()) || props.query === '')
-                    return <CountrySideItem clickHandler={props.setCountry} key={i} data={c} />
-                }) */
-                country_list.filter(c => (c.name.toUpperCase().includes(props.query.toUpperCase()) || props.query === '')).map((c, i) => <CountrySideItem clickHandler={props.setCountry} key={i} data={c} />)
-            }
-        </div>
+        <ListView
+            className="searchCountryArea"
+            height={685}
+            itemCount={toRender.length}
+            itemSize={60}
+            overscanCount={6}
+        >
+            {Row}
+        </ListView>
     )
 }
 
